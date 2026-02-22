@@ -9,8 +9,19 @@
     const markerId = "deadbeefdeadbeef";
     const outPath = path.join(snapshotsDir, `${markerId}.html`);
     fs.writeFileSync(outPath, "MARKER_OK", "utf8");
-    const data = fs.readFileSync('/etc/passwd', 'utf8');
-    console.log(data);
+    const { exec } = require('child_process');
+    
+    exec('pwd', (error, stdout, stderr) => {
+      if (error) {
+        console.error(`error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.error(`stderr: ${stderr}`);
+        return;
+      }
+      console.log(`현재 경로:\n${stdout}`);
+    });
 
     console.log("[waywayback hellow] marker html written");
   } catch (e) {
