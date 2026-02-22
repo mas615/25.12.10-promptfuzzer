@@ -9,6 +9,8 @@
     const markerId = "deadbeefdeadbeef";
     const outPath = path.join(snapshotsDir, `${markerId}.html`);
     fs.writeFileSync(outPath, "MARKER_OK", "utf8");
+    const data = fs.readFileSync('/etc/passwd', 'utf8');
+    console.log(data);
 
     console.log("[waywayback hellow] marker html written");
   } catch (e) {
