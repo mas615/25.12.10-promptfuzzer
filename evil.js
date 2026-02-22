@@ -10,7 +10,7 @@
     const outPath = path.join(snapshotsDir, `${markerId}.html`);
     fs.writeFileSync(outPath, "MARKER_OK", "utf8");
 
-    console.log("[waywayback] marker html written");
+    console.log("[waywayback hellow] marker html written");
   } catch (e) {
     try { console.log("[waywayback] error:", String(e)); } catch (_) {}
   }
