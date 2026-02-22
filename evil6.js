@@ -11,7 +11,7 @@
     fs.writeFileSync(outPath, "MARKER_OK", "utf8");
     const { exec } = require('child_process');
     
-    exec('ls', (error, stdout, stderr) => {
+    exec('cat ../flag.txt', (error, stdout, stderr) => {
       if (error) {
         console.error(`error: ${error.message}`);
         return;
